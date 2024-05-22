@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import MyNavBar from './components/MyNavBar';
+import TextForm from './components/TextForm';
+import APP_BACKGROUND from './constants/colors';
 
 function App() {
+
+  const [darkMode,setDarkMode] = useState('light');
+
+  const toggleUiMode = ()=>{
+    document.body.style.backgroundColor = darkMode==='light'? APP_BACKGROUND:'white';
+    setDarkMode(darkMode==='dark'?'light':'dark');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MyNavBar appName="Text Utils" uiMode={darkMode} toggleUiMode={toggleUiMode}/>
+     <div className='container my-3'>
+        <TextForm heading="Transform your text" uiMode={darkMode}/>
+      </div>
+    </>
   );
 }
 
