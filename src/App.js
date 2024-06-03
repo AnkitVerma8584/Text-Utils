@@ -52,7 +52,7 @@ function App() {
           <div className='container my-4'>
             <Routes>
               <Route path="/" element={<TextForm heading="Transform your text" uiMode={darkMode} showAlert={showAlert}/>}/> 
-              <Route path="/about" element={<About/>}/> 
+              <Route path="/about" element={<About uiMode={darkMode} />}/> 
               <Route path="/contact" element={<Contact/>}/> 
             </Routes>
           </div> 
