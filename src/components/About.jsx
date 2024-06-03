@@ -2,7 +2,7 @@ import React from 'react'
 import APP_BACKGROUND from '../constants/colors';
 
 export default function About(props) {
-
+    document.title = "Text Utils - About";
     let myStyle  = props.uiMode==='dark'?{
         color: 'white',
         backgroundColor: APP_BACKGROUND

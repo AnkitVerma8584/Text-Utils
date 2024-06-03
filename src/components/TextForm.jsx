@@ -2,10 +2,11 @@ import React,{useState} from 'react'
 import APP_BACKGROUND from '../constants/colors'
 
 function TextForm(props) {
+    document.title = "Text Utils - Home";
     const [text,setText] = useState('Enter your text here');
 
     function splitText(str){
-        return str.trim().split(/[ ]+/);
+        return str.trim().split(/\s+/).filter((elem)=> elem.length!==0);
     }
 
     const handleUpClick = ()=>{
@@ -47,7 +48,7 @@ function TextForm(props) {
     const textStyle = {
         color:props.uiMode==='dark'? 'white': 'black'
     }
-
+    let disabledState = text.length==0;
   return (
     <>
     <div>
@@ -58,11 +59,11 @@ function TextForm(props) {
              id='myBox' onChange={handleOnChange} 
              rows={8} value={text}></textarea>
         </div>
-        <button className={`btn m-2 btn-${props.uiMode}`} onClick={handleUpClick}>Convert to UpperCase</button>
-        <button className={`btn m-2 btn-${props.uiMode}`} onClick={handleLowClick}>Convert to LowerCase</button>
-        <button className={`btn m-2 btn-${props.uiMode}`} onClick={toggleText}>Toggle Text</button>
-        <button className={`btn m-2 btn-${props.uiMode}`} onClick={formatText}>Format Text</button>
-        <button className={`btn m-2 btn-${props.uiMode}`} onClick={clearText}>Clear</button>
+        <button disabled={disabledState} className={`btn m-2 btn-${props.uiMode}`} onClick={handleUpClick}>Convert to UpperCase</button>
+        <button disabled={disabledState} className={`btn m-2 btn-${props.uiMode}`} onClick={handleLowClick}>Convert to LowerCase</button>
+        <button disabled={disabledState} className={`btn m-2 btn-${props.uiMode}`} onClick={toggleText}>Toggle Text</button>
+        <button disabled={disabledState} className={`btn m-2 btn-${props.uiMode}`} onClick={formatText}>Format Text</button>
+        <button disabled={disabledState} className={`btn m-2 btn-${props.uiMode}`} onClick={clearText}>Clear</button>
 
     </div>
     <div className={`container my-3 text-${props.uiMode==='dark'? 'light': 'dark'}`}>
